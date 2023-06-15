@@ -4,9 +4,9 @@ import { Cart, Details } from '@/src/sections';
 const IndexPage = () => (
   <Container maxW='container.xl' p='0'>
     <Flex
-      direction={['column-reverse', 'column-reverse', 'column-reverse', 'row']}
-      h='100vh'
-      py='20'
+      direction={{ base: 'column-reverse', lg: 'row' }}
+      h={{ base: 'auto', md: '100vh' }}
+      py={[0, 10, 20]}
     >
       <Details />
       <Cart />
