@@ -1,20 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
 import {
-  FormControl,
-  FormLabel,
-  Input,
-  Select,
-  Checkbox,
   Button,
   HStack,
   VStack,
   Heading,
   Text,
   Divider,
-  SimpleGrid,
-  GridItem,
   Flex,
+  AspectRatio,
+  Stack,
 } from '@chakra-ui/react';
 import Skateboard from '@/src/assets/skateboard.png';
 
@@ -28,7 +23,7 @@ const Cart = () => {
       alignItems='flex-start'
       bg='gray.50'
     >
-      <VStack spacing='3' alignItems='flex-start'>
+      <VStack spacing={3} alignItems='flex-start'>
         <Heading size='2xl'>Your cart</Heading>
         <Text>
           If the price is too hard on your eyes,{' '}
@@ -37,60 +32,43 @@ const Cart = () => {
           </Button>
         </Text>
       </VStack>
-      <Flex gap={6} alignItems='center' w='full' justifyContent='space-between'>
-        <HStack spacing={6} alignItems='center'>
-          <Image src={Skateboard} width={96} height={96} alt='Skateboard' />
-          <VStack spacing={1} alignItems='flex-start'>
+      <HStack spacing={6} alignItems='center' w='full'>
+        <AspectRatio ratio={1} w={24}>
+          <Image src={Skateboard} alt='Skateboard' />
+        </AspectRatio>
+        <Stack
+          spacing={0}
+          w='full'
+          direction='row'
+          justifyContent='space-between'
+          alignItems='center'
+        >
+          <VStack w='full' spacing={0} alignItems='flex-start'>
             <Heading size='md'>Penny board</Heading>
             <Text>PNYCOMP27541</Text>
           </VStack>
+          <Heading size='sm'>$119.00</Heading>
+        </Stack>
+      </HStack>
+      <VStack spacing={4} alignItems='stretch' w='full'>
+        <HStack justifyContent='space-between'>
+          <Text color='gray.600'>Subtotal</Text>
+          <Heading size='sm'>$119.00</Heading>
         </HStack>
-        <Heading size='sm' textAlign='end'>
-          $119.00
-        </Heading>
-      </Flex>
-      <VStack gap={3} w='full'>
-        <Flex
-          gap={6}
-          w='full'
-          alignItems='center'
-          justifyContent='space-between'
-        >
-          <Text>Subtotal</Text>
-          <Heading size='sm' textAlign='end'>
-            $119.00
-          </Heading>
-        </Flex>
-        <Flex
-          gap={6}
-          w='full'
-          alignItems='center'
-          justifyContent='space-between'
-        >
-          <Text>Shipping</Text>
-          <Heading size='sm' textAlign='end'>
-            $19.99
-          </Heading>
-        </Flex>
-        <Flex
-          gap={6}
-          w='full'
-          alignItems='center'
-          justifyContent='space-between'
-        >
-          <Text>Taxes (estimated)</Text>
-          <Heading size='sm' textAlign='end'>
-            $23.80
-          </Heading>
-        </Flex>
+        <HStack justifyContent='space-between'>
+          <Text color='gray.600'>Shipping</Text>
+          <Heading size='sm'>$19.99</Heading>
+        </HStack>
+        <HStack justifyContent='space-between'>
+          <Text color='gray.600'>Taxes (estimated)</Text>
+          <Heading size='sm'>$23.80</Heading>
+        </HStack>
       </VStack>
-      <Divider borderColor='gray.200' />
-      <Flex w='full' gap={6} alignItems='center' justifyContent='space-between'>
-        <Text>Total</Text>
-        <Heading size='lg' textAlign='end'>
-          $162.79
-        </Heading>
-      </Flex>
+      <Divider />
+      <HStack justifyContent='space-between' w='full'>
+        <Text color='gray.600'>Total</Text>
+        <Heading size='lg'>$162.79</Heading>
+      </HStack>
     </VStack>
   );
 };
