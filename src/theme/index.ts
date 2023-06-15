@@ -4,6 +4,8 @@ import {
   withDefaultColorScheme,
   withDefaultVariant,
 } from '@chakra-ui/react';
+import { mode } from '@chakra-ui/theme-tools';
+import { type StyleFunctionProps } from '@chakra-ui/styled-system';
 
 const inputSelectStyles = {
   variants: {
@@ -21,6 +23,13 @@ const inputSelectStyles = {
         borderRadius: 'none',
       },
     },
+  },
+};
+
+const brandRing = {
+  _focus: {
+    ring: 2,
+    ringColor: 'brand.500',
   },
 };
 
@@ -47,16 +56,30 @@ const theme = extendTheme(
       body: `var(--inter-font), ${base.fonts.body}`,
     },
     components: {
+      Button: {
+        variants: {
+          primary: (props: StyleFunctionProps) => ({
+            rounded: 'none',
+            ...brandRing,
+            backgroundColor: mode('brand.500', 'brand.200')(props),
+            color: mode('white', 'gray.800')(props),
+
+            _hover: {
+              backgroundColor: mode('brand.600', 'brand.300')(props),
+            },
+            _active: {
+              backgroundColor: mode('brand.700', 'brand.400')(props),
+            },
+          }),
+        },
+      },
       Input: inputSelectStyles,
       Select: inputSelectStyles,
       Checkbox: {
         baseStyle: {
           control: {
             borderRadius: 'none',
-            _focus: {
-              ring: 2,
-              ringColor: 'brand.500',
-            },
+            ...brandRing,
           },
         },
       },
