@@ -5,6 +5,25 @@ import {
   withDefaultVariant,
 } from '@chakra-ui/react';
 
+const inputSelectStyles = {
+  variants: {
+    filled: {
+      field: {
+        _focus: {
+          borderColor: 'brand.500',
+        },
+      },
+    },
+  },
+  sizes: {
+    md: {
+      field: {
+        borderRadius: 'none',
+      },
+    },
+  },
+};
+
 const theme = extendTheme(
   {
     initialColorMode: 'dark',
@@ -26,6 +45,21 @@ const theme = extendTheme(
     fonts: {
       heading: `var(--montserrat-font), ${base.fonts.heading}`,
       body: `var(--inter-font), ${base.fonts.body}`,
+    },
+    components: {
+      Input: inputSelectStyles,
+      Select: inputSelectStyles,
+      Checkbox: {
+        baseStyle: {
+          control: {
+            borderRadius: 'none',
+            _focus: {
+              ring: 2,
+              ringColor: 'brand.500',
+            },
+          },
+        },
+      },
     },
   },
   withDefaultColorScheme({ colorScheme: 'brand', components: ['Checkbox'] }),
